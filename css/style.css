@@ -1,0 +1,56 @@
+/*
+* @author     Ziad El-Wali <Ziadelwali@gmail.com>
+*/
+
+.bg {
+	background-color: cyan;
+}
+/*FORMATING LAYOUT*/
+body {
+	background-image: url(../img/green2.jpg);
+	background-attachment: fixed;
+	text-shadow: 1px 1px 1px #fff;
+}
+#mainwrapper {
+	margin: 0 auto;
+	margin-bottom: 200px;
+}
+#content {
+	margin-top: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.span4 form {
+	margin: 0 auto;
+}
+h1,
+h4,
+p {
+	text-align: center;
+}
+.error {
+	width: 170px;
+	display: none;
+	margin-top: 10px;
+}
+#success {
+	width: 170px;
+	display: none;
+	margin-top: 10px;
+}
+.code {
+	margin: 0 auto;
+	width: 40%;
+	max-width: 400px;
+}
+img {
+	margin: 0 auto;
+	display: inline-block;
+}
+textarea {
+	height: auto; 
+}
+/*FONTSIZES*/
+body {
+	font-size: 80%;
+}
