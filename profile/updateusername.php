@@ -20,7 +20,7 @@
 		case 'GET':
 		?> 
 		<!--the form hasn't been posted yet, display it-->
-		<center><p>Your current username is:<b> <? echo $_SESSION['username']  ?></b>
+		<center><p>Your current username is:<b> <?php echo $_SESSION['username']  ?></b>
 		</br>to change your username, enter your new username in the field below and submit it.</p>
 		<form method='post' action='updateusername.php'>
 			</br>New username: 

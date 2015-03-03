@@ -41,10 +41,10 @@
 					<input type="submit" class="btn" value="Update here" onclick="return checkAndSubmit2(this.form, this.form.updPassword, this.form.updPassword2);"></input>
 					<p>Notice, when you update your password you will be redirected to login page.</p>
 					<!-- If update went successfull show everything ok info -->
-					<? if(isset($_GET['success'])) 
+					<?php if(isset($_GET['success'])) 
 						{?>
 						<p>You have sucessfully updated your password!</p>
-					<? }?>
+					<?php }?>
 					<!-- if update error show this -->
 					<?php if(isset($_GET['updatefailed']))
 						{?>
