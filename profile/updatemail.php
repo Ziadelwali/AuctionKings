@@ -19,7 +19,7 @@
 		{
 		?>
 		<!--the form hasn't been posted yet, display it-->
-		<center><p>Your current email adress are: <? echo $_SESSION['email']; ?>
+		<center><p>Your current email adress are: <?php echo $_SESSION['email']; ?>
 		</br>to change your email adress, enter your new email adress in the field below and submit it.</p>
 		<form method='post' action='updatemail.php'>
 			</br>New email adress: 
