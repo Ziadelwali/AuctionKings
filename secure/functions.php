@@ -1,9 +1,9 @@
 <?php
-
-/*
-* @author     Ziad El-Wali <Ziadelwali@gmail.com>
-*/
-
+	
+	/*
+		* @author     Ziad El-Wali <Ziadelwali@gmail.com>
+	*/
+	
 	//SECURE SESSION START FUNCTION
 	function sec_session_start()
 	{
@@ -33,7 +33,7 @@
 			$stmt->bind_result($user_id, $username, $db_password, $salt, $email, $status, $role_id); // get variables from result.
 			$stmt->fetch();
 			$password = hash('sha512', $password.$salt); // The hashed password with the unique salt.
-
+			
             // If the user exists
 			if($stmt->num_rows == 1)
             {
@@ -49,7 +49,7 @@
 						// Password is correct!
 						$ip_address = $_SERVER['REMOTE_ADDR']; // Get the IP address of the user.
 						$user_browser = $_SERVER['HTTP_USER_AGENT']; // Get the user-agent string of the user.
-
+						
                         // preg_replace — Performs a regular expression search and replace
 						$user_id = preg_replace("/[^0-9]+/", "", $user_id);
 						$_SESSION['user_id'] = $user_id;
@@ -84,11 +84,11 @@
 	}
 	
 	//Brute force method to ensure several login attempts get registered and bans account.
-
+	
 	function checkbrute($user_id, $dbcon)
 	{
-		// Get timestamp of current time
-		$now = strtotime();
+		// Get time of current time
+		$now = time();
 		// All login attempts are counted from the past 2 hours.
 		$valid_attempts = $now - (2 * 60 * 60);
 		
@@ -108,9 +108,9 @@
 			}
 		}
 	}
-
+	
 	//CREATE LOGIN CHECK FUNCTION - Logged Status
-	function login_check($dbcon)
+	function login_check($db)
 	{
 		// Check if all session variables are set
 		if(isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) 
@@ -121,7 +121,7 @@
 			$ip_address = $_SERVER['REMOTE_ADDR']; // Get the IP address of the user. 
 			$user_browser = $_SERVER['HTTP_USER_AGENT']; // Get the user-agent string of the user.
 			
-			if ($stmt = $dbcon->prepare("SELECT password FROM account WHERE account_id = ? LIMIT 1")) 
+			if ($stmt = $db->prepare("SELECT password FROM account WHERE id_account = ? LIMIT 1"))
 			{ 
 				$stmt->bind_param('i', $user_id); // Bind "$user_id" to parameter.
 				$stmt->execute(); // Execute the prepared query.
@@ -132,29 +132,33 @@
 					$stmt->bind_result($password); // get variables from result.
 					$stmt->fetch();
 					$login_check = hash('sha512', $password.$ip_address.$user_browser);
-					if($login_check == $login_string) 
+					if($login_check == $login_string)
 					{
 						// Logged In!!!!
 						return true;
-					} else 
+					}
+					else 
 					{
 						// Not logged in
 						return false;
 					}
-				} else 
+				}
+				else 
 				{
 					// Not logged in
 					return false;
 				}
-			} else 
+			}
+			else 
 			{
 				// Not logged in
 				return false;
 			}
-		} else 
+		}
+		else 
 		{
 			// Not logged in
 			return false;
 		}
 	}
-?>																																			
+?>																																					
