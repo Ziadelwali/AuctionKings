@@ -111,13 +111,12 @@
 			$random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
 			// Create salted password
 			$password = hash('sha512', $password.$random_salt);
+			// Create the query for the prepared statement
+			$query= "CALL create_account_nodetails (?,?,?,?)"; 
 			
-			//$sql = 'CALL create_account_nodetails (?, ?, ?, ?)';
-			
-			//if ($insert_stmt = $dbcon->prepare("call create_user (?, ?, ?, ?)")) 
-			if ($insert_stmt = $dbcon->prepare("CALL create_account_nodetails (?, ?, ?, ?)")) 
+			if ($insert_stmt = $dbcon->prepare($query)) 
 			{
-				$insert_stmt->bind_param("ssss", $username, $password, $random_salt, $email);
+			$insert_stmt->bind_param('ssss', $username, $password, $random_salt, $email);
 				
 				// Execute the prepared query.
 				$insert_stmt->execute();
