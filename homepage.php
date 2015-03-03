@@ -12,7 +12,7 @@
 	{
 	    include 'header.php';
 	
-	if ($_SESSION['user_level'] == 2)
+	if ($_SESSION['role_id'] == 2)
 		{
 			switch ($_SERVER['REQUEST_METHOD'])
 			{
@@ -110,7 +110,7 @@
 		}
 	}
 	
-	if ($_SESSION['user_level'] == 1 or $_SESSION['user_level'] == 2)
+	if ($_SESSION['role_id'] == 1 or $_SESSION['role_id'] == 2)
 	{
 	?>
 			<form><h4>Welcome <?php echo $_SESSION['username'] ?>.<br/><br/>This is the frontpage of Auction Kings Website! <br/>
@@ -141,7 +141,7 @@
 		<img src="img/auction_image.jpg" alt="Auction_pic" height="250" width="250">
 		<?php
 	}
-	if ($_SESSION['user_level'] == 1)
+	if ($_SESSION['role_id'] == 1)
 	{
 		echo '<p>You have to contact an admin in order to create a new category!</p>';
 	}

@@ -1,7 +1,7 @@
 
 <?php
 	
-
+	
 	define("HOST", "localhost"); // The host you want to connect to.
 	define("USER", "sec_user"); // The database username.
 	define("PASSWORD", "eKcGZr59zAa2BEWU"); // The database password. 
@@ -9,9 +9,9 @@
 	
 	try {
 		$dbcon = new mysqli(HOST, USER, PASSWORD, DATABASE);
-	// If you are connecting via TCP/IP rather than a UNIX socket remember to add the port number as a parameter.
-	} catch (Exception $e) 
-	
+		// If you are connecting via TCP/IP rather than a UNIX socket remember to add the port number as a parameter.
+	} 
+	catch (Exception $e) 
 	{
 		exit('Caught exception: '.$e->getMessage());
 	}
@@ -22,4 +22,4 @@
 		header("Location: '../../../?regError=3");
 		exit();
 	}
-
+	

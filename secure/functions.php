@@ -30,7 +30,7 @@
 			$stmt->bind_param('s', $email); // Bind "$email" to parameter.
 			$stmt->execute(); // Execute the prepared query.
 			$stmt->store_result();
-			$stmt->bind_result($user_id, $username, $db_password, $salt, $email, $status, $user_level); // get variables from result.
+			$stmt->bind_result($user_id, $username, $db_password, $salt, $email, $status, $role_id); // get variables from result.
 			$stmt->fetch();
 			$password = hash('sha512', $password.$salt); // The hashed password with the unique salt.
 
@@ -58,8 +58,8 @@
 						$_SESSION['username'] = $username;
 						$email = preg_replace("/(.+)\+.*(@.+)/", "", $email); // XSS protection as we might print this value
 						$_SESSION['email'] = $email;
-						$user_level = preg_replace("/[^1-2]+/", "", $user_level);
-						$_SESSION['role_id'] = $user_level;
+						$role_id = preg_replace("/[^1-2]+/", "", $role_id);
+						$_SESSION['role_id'] = $role_id;
 						$status = preg_replace("/[^0-1]+/", "", $status);
 						$_SESSION['status'] = $status;
 						$_SESSION['login_string'] = hash('sha512', $password.$ip_address.$user_browser);
