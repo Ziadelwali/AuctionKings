@@ -25,9 +25,9 @@
 			<input type='submit' value='Add category' /></center>
 			
 			<!-- If creation was successful -->
-			<? if(isset($_GET['catSuccess'])) {?>
+			<?php if(isset($_GET['catSuccess'])) {?>
 				<p>You have successfully created a new category!</p>
-			<? }?>
+			<?php }?>
 			<!-- if category creation had error show this -->
 			<p>
 				<?php 
@@ -113,9 +113,9 @@
 	if ($_SESSION['user_level'] == 1 or $_SESSION['user_level'] == 2)
 	{
 	?>
-			<form><h4>Welcome <? echo $_SESSION['username'] ?>.<br/><br/>This is the frontpage of Auction Kings Website! <br/>
+			<form><h4>Welcome <?php echo $_SESSION['username'] ?>.<br/><br/>This is the frontpage of Auction Kings Website! <br/>
 			<br/>Navigate through the website at the navigation bar in the top of the page!</h4></form>
-	<?
+	<?php
 		// Table showing categories and their descriptions.
 		// Select queries return a resultset
 		if ($select_stmt = $dbcon->query("SELECT cat_id, cat_name, cat_description FROM categories ORDER BY cat_name")) 
@@ -139,7 +139,7 @@
 		}
 		?>
 		<img src="img/auction_image.jpg" alt="Auction_pic" height="250" width="250">
-		<?
+		<?php
 	}
 	if ($_SESSION['user_level'] == 1)
 	{

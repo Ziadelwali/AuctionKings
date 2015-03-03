@@ -124,9 +124,9 @@
 										<input type="submit" class="btn" value="Register here" onclick="return checkAndSubmit2(this.form, this.form.regPassword, this.form.regPassword2);"></input>
 										
 										<!-- If registration successfull show everything ok info -->
-										<? if(isset($_GET['success'])) {?>
+										<?php if(isset($_GET['success'])) {?>
 											<p>You have sucessfully registered </br>and can now log in at the login form above!</p>
-										<? }?>
+										<?php }?>
 										<!-- if registration error show this -->
 										<p>
 											<?php 
