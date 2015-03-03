@@ -1,18 +1,18 @@
 <?php
-
-/*
-* @author     Ziad El-Wali <Ziadelwali@gmail.com>
-*/
-
+	
+	/*
+		* @author     Ziad El-Wali <Ziadelwali@gmail.com>
+	*/
+	
 	include 'secure/db_connect.php';
 	include 'secure/functions.php';
 	sec_session_start(); // Our custom secure way of starting a php session.
-
+	
 	if(login_check($dbcon) == true AND $_SESSION['status'] == 0)
 	{
 	    include 'header.php';
-	
-	if ($_SESSION['role_id'] == 2)
+		
+		if ($_SESSION['role_id'] == 2)
 		{
 			switch ($_SERVER['REQUEST_METHOD'])
 			{
@@ -71,6 +71,7 @@
 			// Sanitation for input
 			if (empty($_POST['cat_name']))
 			{
+				
 				header("Location: homepage.php?catError=2");
 				exit;
 			}
@@ -88,15 +89,15 @@
 			// "mysqli_real_escape_string" escapes special characters in a string.
 			$categoryName = mysqli_real_escape_string($dbcon, $_POST['cat_name']);
 			$categoryDescription = mysqli_real_escape_string($dbcon, $_POST['cat_description']);
-
+			
 			//the form has been posted, so save it
 			if ($insert_stmt = $dbcon->prepare("INSERT INTO categories set cat_name = ?, cat_description = ?"))
 			{
-            $insert_stmt->bind_param('ss', $categoryName, $categoryDescription);
-
+				$insert_stmt->bind_param('ss', $categoryName, $categoryDescription);
+				
 				// Execute the prepared query.
 				$insert_stmt->execute();
-
+				
 				//Success
 				header("Location: homepage.php?catSuccess=1");
 				exit;
@@ -113,8 +114,8 @@
 	if ($_SESSION['role_id'] == 1 or $_SESSION['role_id'] == 2)
 	{
 	?>
-			<form><h4>Welcome <?php echo $_SESSION['username'] ?>.<br/><br/>This is the frontpage of Auction Kings Website! <br/>
-			<br/>Navigate through the website at the navigation bar in the top of the page!</h4></form>
+	<form><h4>Welcome <?php echo $_SESSION['username'] ?>.<br/><br/>This is the frontpage of Auction Kings Website! <br/>
+	<br/>Navigate through the website at the navigation bar in the top of the page!</h4></form>
 	<?php
 		// Table showing categories and their descriptions.
 		// Select queries return a resultset
@@ -140,12 +141,12 @@
 		?>
 		<img src="img/auction_image.jpg" alt="Auction_pic" height="250" width="250">
 		<?php
-	}
-	if ($_SESSION['role_id'] == 1)
-	{
-		echo '<p>You have to contact an admin in order to create a new category!</p>';
-	}
-	
+		}
+		if ($_SESSION['role_id'] == 1)
+		{
+			echo '<p>You have to contact an admin in order to create a new category!</p>';
+		}
+		
 		include 'footer.php';
 	}
 	else if ($_SESSION['status'] == 1)
@@ -153,7 +154,7 @@
 		header("Location: index.php?logError=5");
 		// Destroy session
 		session_destroy();
-        exit;
+		exit;
 	}
 	else
 	{

@@ -22,10 +22,10 @@
 	}
 	
 	//SECURE LOGIN FUNCTION
-	function login($email, $password, $mysqli)
+	function login($email, $password, $dbcon)
     {
 		// Using prepared Statements means that SQL injection is not possible. 
-		if ($stmt = $mysqli->prepare("SELECT id_account, username, password, salt, email, status, role_id FROM account WHERE email = ? LIMIT 1"))
+		if ($stmt = $dbcon->prepare("SELECT id_account, username, password, salt, email, status, role_id FROM account WHERE email = ? LIMIT 1"))
         {
 			$stmt->bind_param('s', $email); // Bind "$email" to parameter.
 			$stmt->execute(); // Execute the prepared query.
@@ -38,7 +38,7 @@
 			if($stmt->num_rows == 1)
             {
 				// We check if the account is locked from too many login attempts
-				if(checkbrute($user_id, $mysqli) == true)
+				if(checkbrute($user_id, $dbcon) == true)
 				{
 					// Account is locked
 					return false;
@@ -46,7 +46,6 @@
 				{
 					if($db_password == $password)  // Check if the password in the database matches the password the user submitted.
 					{
-						
 						// Password is correct!
 						$ip_address = $_SERVER['REMOTE_ADDR']; // Get the IP address of the user.
 						$user_browser = $_SERVER['HTTP_USER_AGENT']; // Get the user-agent string of the user.
@@ -65,7 +64,7 @@
 						$_SESSION['login_string'] = hash('sha512', $password.$ip_address.$user_browser);
 						
 						$timestamp = date('Y-m-d H:i:s');
-						$mysqli->query("UPDATE FROM account set lastlogin = $timestamp WHERE id_account = $user_id");
+						$dbcon->query("UPDATE FROM account set lastlogin = $timestamp WHERE id_account = $user_id");
 						
 						// Login successful.
 						return true;
@@ -73,7 +72,7 @@
 					{
 						// We record the failed login attempt in the database
 						$timestamp = date('Y-m-d H:i:s');
-						$mysqli->query("INSERT INTO failed_login_attempts (account_id, time) VALUES ('$user_id', '$timestamp')");
+						$dbcon->query("INSERT INTO failed_login_attempts (account_id, time) VALUES ('$user_id', '$timestamp')");
 						return false;
 					}
 				}
@@ -86,14 +85,14 @@
 	
 	//Brute force method to ensure several login attempts get registered and bans account.
 
-	function checkbrute($user_id, $mysqli)
+	function checkbrute($user_id, $dbcon)
 	{
 		// Get timestamp of current time
 		$now = strtotime();
 		// All login attempts are counted from the past 2 hours.
 		$valid_attempts = $now - (2 * 60 * 60);
 		
-		if ($stmt = $mysqli->prepare("SELECT time FROM failed_login_attempts WHERE account_id = ? AND time > '$valid_attempts'"))
+		if ($stmt = $dbcon->prepare("SELECT time FROM failed_login_attempts WHERE account_id = ? AND time > '$valid_attempts'"))
 		{
 			$stmt->bind_param('i', $user_id); 
 			// Execute the prepared query.
@@ -111,7 +110,7 @@
 	}
 
 	//CREATE LOGIN CHECK FUNCTION - Logged Status
-	function login_check($mysqli)
+	function login_check($dbcon)
 	{
 		// Check if all session variables are set
 		if(isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) 
@@ -122,7 +121,7 @@
 			$ip_address = $_SERVER['REMOTE_ADDR']; // Get the IP address of the user. 
 			$user_browser = $_SERVER['HTTP_USER_AGENT']; // Get the user-agent string of the user.
 			
-			if ($stmt = $mysqli->prepare("SELECT password FROM account WHERE account_id = ? LIMIT 1")) 
+			if ($stmt = $dbcon->prepare("SELECT password FROM account WHERE account_id = ? LIMIT 1")) 
 			{ 
 				$stmt->bind_param('i', $user_id); // Bind "$user_id" to parameter.
 				$stmt->execute(); // Execute the prepared query.
