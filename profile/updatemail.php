@@ -33,7 +33,7 @@
 		{
 			$updateEmail = mysqli_real_escape_string($dbcon, $_POST['email']);
 			//the form has been posted, so save it
-			$sql = "UPDATE members SET email='". $updateEmail ."' WHERE id=".$_SESSION['user_id']."";
+			$sql = "UPDATE account SET email='". $updateEmail ."' WHERE id_account=".$_SESSION['user_id']."";
 			$result = mysqli_query($dbcon, $sql);
 			// Prepared statements
 			/*
