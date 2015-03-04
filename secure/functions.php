@@ -24,8 +24,9 @@
 	//SECURE LOGIN FUNCTION
 	function login($email, $password, $dbcon)
     {
+    	$sql = "SELECT id_account, username, password, salt, email, status, role_id FROM account WHERE email = ? LIMIT 1";
 		// Using prepared Statements means that SQL injection is not possible. 
-		if ($stmt = $dbcon->prepare("SELECT id_account, username, password, salt, email, status, role_id FROM account WHERE email = ? LIMIT 1"))
+		if ($stmt = $dbcon->prepare($sql))
         {
 			$stmt->bind_param('s', $email); // Bind "$email" to parameter.
 			$stmt->execute(); // Execute the prepared query.
