@@ -24,28 +24,14 @@
  			exit;
  		}
 		
-		
-		
-		
-		
-		
 		if($_SERVER['REQUEST_METHOD'] == 'GET')
 		{
-			
-			
-			
 			$select_stmt = $dbcon->query("SELECT id_category, cat_name, cat_description FROM categories ORDER BY cat_name");
 			{
-				
 				echo '<h4>Category</h4>';
 				// Use "htmlentities" to protect against persistent xss.
 				echo '<h1><a href="auction_category.php?id='.$row["id_category"].'">'.htmlentities($row["cat_name"],ENT_QUOTES, "UTF-8").'</a></h1>';
 			}
-		
-		
-		
-		
-		
 		
 		//Display of the topics starts of by selecting queries to return a resultset
 		$sql = "SELECT topic_id, topic_subject, topic_date FROM topics WHERE topic_cat = ". $categoryId ." ORDER BY topic_subject";

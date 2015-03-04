@@ -68,7 +68,8 @@ else
 	$password = hash('sha512', $password.$random_salt);
 	
 	$userId = $_SESSION['user_id'];
-	if ($update_stmt = $dbcon->prepare("UPDATE members set password = ?, salt = ? where id = ?")) 
+	
+	if ($update_stmt = $dbcon->prepare("UPDATE account set password = ?, salt = ? where id_account = ?")) 
 	{
 		$update_stmt->bind_param('ssi', $password, $random_salt, $userId);
 		
