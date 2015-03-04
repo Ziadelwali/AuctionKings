@@ -15,13 +15,14 @@
 		// See who is actually logged in
 		echo 'Logged in as : '.$_SESSION['username'].'</br>';
 		
+		echo $_SESSION[''];
 		// Control if the id in the browser address field really is a numeric value.
-		$categoryId = $_GET["id"];
-		if (!is_numeric($categoryId))
-		{
-			header("Location: homepage.php?catError=4");
-			exit;
-		}
+		$categoryId = $_SESSION['user_id'];
+ 		if (!is_numeric($categoryId))
+ 		{
+ 			header("Location: homepage.php?catError=4");
+ 			exit;
+ 		}
 		
 		
 		
@@ -33,12 +34,12 @@
 			
 			
 			
-			$select_stmt = $dbcon->query("SELECT cat_id, cat_name, cat_description FROM categories ORDER BY cat_name");
+			$select_stmt = $dbcon->query("SELECT id_category, cat_name, cat_description FROM categories ORDER BY cat_name");
 			{
 				
 				echo '<h4>Category</h4>';
 				// Use "htmlentities" to protect against persistent xss.
-				echo '<h1><a href="auction_category.php?id='.$row["cat_id"].'">'.htmlentities($row["cat_name"],ENT_QUOTES, "UTF-8").'</a></h1>';
+				echo '<h1><a href="auction_category.php?id='.$row["id_category"].'">'.htmlentities($row["cat_name"],ENT_QUOTES, "UTF-8").'</a></h1>';
 			}
 		
 		
