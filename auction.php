@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
 <style>
 table, th, td {
-     border: 1px solid black;
-}
-#myDiv 
-{
-height:100px;
-width:100px;
-}
-#myDiv img
-{
-max-width:100%; 
-max-height:100%;
-margin:auto;
-display:block;
+	border: 1px solid black;
 }
 </style>
-</head>
-<body>
 <?php
 	
 	/*
@@ -29,7 +12,8 @@ display:block;
 	include 'secure/db_connect.php';
 	include 'secure/functions.php';
 	
-	$sql = "SELECT ID, Title, Picture, Higestbid, Timeend, Description, Bids FROM auctionking.view_all_auctions";
+	$auctionid = $_GET['id'];
+	$sql = "SELECT ID, Title, Picture, Higestbid, Timeend, Description, Bids FROM auctionking.view_all_auctions WHERE ID = $auctionid;";
 	$result = $dbcon->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -55,6 +39,43 @@ display:block;
 
 $dbcon->close();
 
+function placebid()
+{
+	echo "1";
+	if(isset($_POST['bidinput']))
+	{
+		echo "2";
+	$amount = $_POST['bidinput'];
+	
+	$query= "CALL create_bid (?,?,?)";
+		
+	if ($insert_stmt = $dbcon->prepare($query))
+	{
+		$insert_stmt->bind_param('iii', $amount, $user_id, $auctionid);
+	
+		// Execute the prepared query.
+		$insert_stmt->execute();
+		header("Location: ../?success=1");
+		// Make sure that code below does not get executed when we redirect.
+		exit;
+	}
+	else
+	{
+		header("Location: ../../../?regError=1");
+		// Make sure that code below does not get executed when we redirect.
+		exit;
+	}
+  }
+}
+
 ?>
-</body>
-</html>
+</br>
+</br>
+<table>
+	<tr>
+		<td>Enter your bid</td>
+		<td><input id="bidinputid" name="bidinput" type="number" min="0.1"></td>
+		<td><input id="bidbtn" name="bidbtn" type="submit" value="Place Bid"
+			onclick="placebid()"></td>
+	</tr>
+</table>
