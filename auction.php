@@ -6,7 +6,7 @@ table, th, td {
 <?php
 	
 	/*
-		* @author     Casper Madsen <iliketurtels@gmail.com>
+		* @author     Casper M Madsen <iliketurtels@gmail.com>
 	*/
 	
 	include 'secure/db_connect.php';
