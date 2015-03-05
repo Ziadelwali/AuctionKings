@@ -34,15 +34,7 @@
 					</ul>
 				</div>
 				
-				<div class="btn-group">
-					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Kingdoms<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="../plantkingdomsite.php">Plant kingdom</a></li>
-						<li><a href="../animalKingdom.php">Animal kingdom</a></li>
-						<li><a href="../fungiKingdom.php">Fungi kingdom</a></li>
-					</ul>
-				</div>
+				
 			</div>
 			<center><li><a href="../logout.php">Logout</a></li></center>
 		</div>

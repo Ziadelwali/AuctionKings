@@ -26,7 +26,7 @@
 
                 $stat = 1;
 
-                if ($upd_stmt = $dbcon->prepare("UPDATE members set status = ? WHERE id=".$_SESSION['user_id'].""))
+                if ($upd_stmt = $dbcon->prepare("UPDATE account set status = ? WHERE id_account=".$_SESSION['user_id'].""))
 			{
 
 				$upd_stmt->bind_param('i', $stat);

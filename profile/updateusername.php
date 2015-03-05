@@ -34,7 +34,7 @@
 		case 'POST':
 			$UpdateUsername = mysqli_real_escape_string($dbcon, $_POST['newUsername']);
 			//the form has been posted, so save it
-			$sql = "UPDATE members SET username='". $UpdateUsername ."' WHERE id=".$_SESSION['user_id']."";
+			$sql = "UPDATE account SET username='". $UpdateUsername ."' WHERE id_account=".$_SESSION['user_id']."";
 			$result = mysqli_query($dbcon, $sql);
 			if(!$result)
 			{
