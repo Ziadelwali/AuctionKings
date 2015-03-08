@@ -22,6 +22,10 @@
 	</head>
 	
     <body>
+    
+    <?php 
+    include_once 'analyticstracking.php';
+    ?>
         <div class="container-fluid" id="mainwrapper">
             <div class="container-fluid" id="content">
 				<h1>Auction Kings Website</h1></br>

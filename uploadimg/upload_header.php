@@ -18,6 +18,9 @@
         <link href="../css/style.css" rel="stylesheet">
 	</head>
     <body>
+    <?php 
+    include_once '../analyticstracking.php';
+    ?>
 		<div class = "navbar navbar-inverse navbar-static-top">
 			<div class = "container">
 				<div class="btn-group">
