@@ -101,12 +101,14 @@
 				
 				//Success
 				header("Location: homepage.php?catSuccess=1");
+				$dbcon->close();
 				exit;
 			}
 			else
 			{
 				//something went wrong, display the error
 				header("Location: homepage.php?catError=3");
+				$dbcon->close();
 				exit;
 			}
 		}

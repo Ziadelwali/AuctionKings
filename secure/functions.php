@@ -82,6 +82,7 @@
 				return false;
 			}
 		}
+		$dbcon->close();
 	}
 	
 	//Brute force method to ensure several login attempts get registered and bans account.
@@ -108,6 +109,7 @@
 				return false;
 			}
 		}
+		$dbcon->close();
 	}
 	
 	//CREATE LOGIN CHECK FUNCTION - Logged Status
@@ -123,7 +125,7 @@
 			$user_browser = $_SERVER['HTTP_USER_AGENT']; // Get the user-agent string of the user.
 			
 			if ($stmt = $db->prepare("SELECT password FROM account WHERE id_account = ? LIMIT 1"))
-			{ 
+			{
 				$stmt->bind_param('i', $user_id); // Bind "$user_id" to parameter.
 				$stmt->execute(); // Execute the prepared query.
 				$stmt->store_result();
@@ -149,7 +151,9 @@
 					// Not logged in
 					return false;
 				}
+				$dbcon->close();
 			}
+			
 			else 
 			{
 				// Not logged in
