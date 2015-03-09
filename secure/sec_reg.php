@@ -12,6 +12,8 @@
 	$prefix = date("His").rand(1000,9999);		// $prefix is for registration test automation
 	$username = $prefix.$_POST['regUsername'];
 	$email = $prefix.$_POST['regEmail'];
+	//$username = $_POST['regUsername'];
+	//$email = $_POST['regEmail'];
 	$password = $_POST['regPassword'];
 	
 	//Sanitation goes here.
