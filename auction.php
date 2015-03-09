@@ -50,7 +50,6 @@
 	    {
 	    	echo "0 results";
 	    }
-	    $dbcon->close();
 	    
 	    if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    	$amount = $_POST['bidinput'];
@@ -61,6 +60,7 @@
 	    	$select = $dbcon->query('SELECT @sqlstatus');
 	    	$result = $select->fetch_assoc();
 	    	$sqlstatus     = $result['@sqlstatus'];
+	    	$dbcon->close();
 	    	if ($sqlstatus == 0)
 	    	{
 	    		echo "Bid Failed!";
@@ -82,9 +82,6 @@
 	    		echo "You cant bid on your own auctions";
 	    	}
 	    }
-	    
-	    $dbcon->close();
-	    
 	    ?>
 </br>
 </br>
