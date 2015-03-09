@@ -3,7 +3,7 @@
 	/*
 		* @author     Ziad El-Wali <Ziadelwali@gmail.com>
 	*/
-	
+
 	//SECURE SESSION START FUNCTION
 	function sec_session_start()
 	{

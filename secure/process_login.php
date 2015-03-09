@@ -6,8 +6,8 @@
 	
 	include 'db_connect.php';
 	include 'functions.php';
-	sec_session_start(); // Our custom secure way of starting a php session. 
-	
+	sec_session_start(); // Our custom secure way of starting a php session.
+	include_once '../analyticstracking.php';
 	//Define variables and set their values, from the form submitted in the html login form (index.php).
 	$email = $_POST['loginEmail'];
 	$password = $_POST['p']; // The hashed password.
