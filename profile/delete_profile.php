@@ -36,7 +36,8 @@
 				$upd_stmt->execute();
 
 				//Success
-				header("Location: ../index.php?logError=6");
+				header("Location: ../activateprofile.php");		// This is for test automation of the delete profile test case.
+				//header("Location: ../index.php?logError=6");	// Use this for ordinary use of the site, for deactivation of profile.
 				exit;
 			}
 			else
