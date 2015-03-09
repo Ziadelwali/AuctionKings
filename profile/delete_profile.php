@@ -17,9 +17,10 @@
 				case 'GET':
                 ?>
                 <!--the form hasn't been posted yet, display it-->
-                <p><h4>Notice... If you delete your mail you will be redirected to login page and your profile will be deleted.</h4></p>
+                <!-- Deletion -->
+                <p><h4>Notice... If you delete your profile you will be redirected to login page and your profile will be deleted.</h4></p>
 			<form method='post' action='delete_profile.php'>
-				<center><input type='submit' value='Delete profile' /></center>
+				<center><input type='submit' value='Delete profile' /></center></form>
                 <?php
                 break;
                 case 'POST':
@@ -46,6 +47,8 @@
 			}
                 break;
             }
+            
+            
 
     	include 'profile_footer.php';
 	}
