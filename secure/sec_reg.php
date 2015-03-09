@@ -47,6 +47,7 @@
 			
 			return $rows>0;
 		}
+		$db->close();
 	}
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") 
@@ -123,6 +124,7 @@
 				$insert_stmt->execute();
 				header("Location: ../?success=1");
 				// Make sure that code below does not get executed when we redirect.
+				$dbcon->close();
 				exit;
 			}
 			else

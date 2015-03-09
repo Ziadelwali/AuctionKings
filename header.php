@@ -31,8 +31,8 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="homepage.php">HomePage</a></li>
 						<li><a href="auctions.php">Auctions</a></li>
-						<li><a href="CreateItemTemp.php">Create Auction</a></li>
-						<li><a href="auction_category.php">Auction Categories</a></li>
+						<li><a href="CreateItem.php">Create Auction</a></li>
+						<li><a href="forum/forumindex.php">Forum</a></li>
 						<li class="divider"></li>
 						<li><a href="profile/profile.php">Your profile</a></li>
 					</ul>

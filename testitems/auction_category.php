@@ -15,7 +15,6 @@
 		// See who is actually logged in
 		echo 'Logged in as : '.$_SESSION['username'].'</br>';
 		
-		echo $_SESSION[''];
 		// Control if the id in the browser address field really is a numeric value.
 		$categoryId = $_SESSION['user_id'];
  		if (!is_numeric($categoryId))
