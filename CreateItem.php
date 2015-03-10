@@ -18,8 +18,6 @@
 	    	case 'GET':
 	    
 ?>
-
-<h1>Create Auction</h1>
 <form method='POST' enctype="multipart/form-data">
 	<fieldset>
 		<legend>Add item details</legend>

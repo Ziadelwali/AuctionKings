@@ -92,7 +92,7 @@
 			$categoryDescription = mysqli_real_escape_string($dbcon, $_POST['cat_description']);
 			
 			//the form has been posted, so save it
-			if ($insert_stmt = $dbcon->prepare("INSERT INTO categories set cat_name = ?, cat_description = ?"))
+			if ($insert_stmt = $dbcon->prepare("INSERT INTO category set cat_name = ?, cat_description = ?"))
 			{
 				$insert_stmt->bind_param('ss', $categoryName, $categoryDescription);
 				
@@ -133,7 +133,7 @@
 			{
 				// Use "htmlentities" to protect against persistent xss.
 				echo '<tr>';
-				echo '<td><h1>'.htmlentities($row["cat_name"],ENT_QUOTES, "UTF-8").'</h1></td>';
+				echo '<td><h2>'.htmlentities($row["cat_name"],ENT_QUOTES, "UTF-8").'</h2></td>';
 				echo '<td><h4>'.htmlentities($row["cat_description"],ENT_QUOTES, "UTF-8").'</h4></td>';
 				echo '</tr>';
 			}  
