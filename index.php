@@ -201,7 +201,6 @@
 				</div> <!-- End of Registration div -->
 			</div>
 		</div>
-		<a href="activateprofile.php">activate profile</a>
 		<!--Scripts-->
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>

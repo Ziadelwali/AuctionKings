@@ -9,11 +9,11 @@
 	include 'functions.php';
 	
 	//Define variables and set their values, from the form submitted in the html login form (index.php).
-	$prefix = date("His").rand(1000,9999);		// $prefix is for registration test automation
-	$username = $prefix.$_POST['regUsername'];
-	$email = $prefix.$_POST['regEmail'];
-	//$username = $_POST['regUsername'];
-	//$email = $_POST['regEmail'];
+	//$prefix = date("His").rand(1000,9999);		// $prefix is for registration test automation
+	//$username = $prefix.$_POST['regUsername'];
+	//$email = $prefix.$_POST['regEmail'];
+	$username = $_POST['regUsername'];
+	$email = $_POST['regEmail'];
 	$password = $_POST['regPassword'];
 	
 	//Sanitation goes here.
@@ -62,7 +62,7 @@
 		} 
 		else 
 		{
-			//$username = test_input($_POST['regUsername']);
+			$username = test_input($_POST['regUsername']);		// Comment this line out for registration test automation.
 			// check if name only contains letters and whitespace.
 			//preg_match performs a regular expression match, up against the username in this case.
 			if (!preg_match("/^[a-zA-Z0-9]*$/",$username)) 
@@ -80,7 +80,7 @@
 		} 
 		else 
 		{
-			//$email = test_input($_POST["regEmail"]);
+			$email = test_input($_POST["regEmail"]);		// Comment this line out for registration test automation.
 			// check if e-mail address is well-formed
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
 			{
