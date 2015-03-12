@@ -12,6 +12,9 @@
 	{
 
 	    include 'profile_header.php';
+	    
+	    echo 'Logged in as : '.$_SESSION['username'];
+	    
 		echo '<h4>This is where you can change your username.</br></h4>';
 		
 		//Updating the username field :

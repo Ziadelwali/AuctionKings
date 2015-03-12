@@ -2,7 +2,7 @@
 table, th, td {
 	border: 1px solid green;
 		text-align: center;
-		background-color: #9FF781;
+		background-color: #2E8B57;
 		width: 1000px
 }
 th {
@@ -23,7 +23,8 @@ display:block;
 body {
 	background-image: url(../img/Green.jpg);
 	background-attachment: fixed;
-	text-shadow: 1px 1px 1px #fff;
+	color: #FFFACD;
+	/*text-shadow: 1px 1px 1px #fff;*/
 }
 #mainwrapper {
 	margin: 0 auto;

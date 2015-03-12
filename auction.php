@@ -12,6 +12,7 @@
 	{
 	    include 'header.php';
 
+	    echo 'Logged in as : '.$_SESSION['username'];
 	    
 	    $auctionid = $_GET['id'];
 	    $sql = "SELECT ID, Title, Picture, Higestbid, Timestart ,Timeend, Description, Username, Bids FROM auctionking.view_one_auction WHERE ID = $auctionid;";
@@ -19,7 +20,7 @@
 	    
 	    if ($result->num_rows > 0) 
 	    {
-	    	echo "<table><tr><th>ID</th><th>Title</th><th>Picture</th><th>Higest Bid</th><th>Auction started</th><th>Auction ends</th><th>Description</th><th>Created by</th><th>Bids</th></tr>";
+	    	echo "<center><br><table><tr><th>ID</th><th>Title</th><th>Picture</th><th>Higest Bid</th><th>Auction started</th><th>Auction ends</th><th>Description</th><th>Created by</th><th>Bids</th></tr>";
 	    	// output data of each row
 	    	while($row = $result->fetch_assoc()) {
 	    		$id = $row["ID"];
@@ -44,7 +45,7 @@
 	    
 	    		// echo '<tr><td>' . $row["ID"]. '</td><td>' . $row["Title"]. '</td><td><div id="myDiv"><a href="?id=$id"><img src="img/' . $row["Picture"]. '"></a></div></td><td>' . $row["Higestbid"]. '</td><td>' . $row["Timeend"]. '</td><td>' . $row["Description"]. '</td><td>' . $row["Bids"]. "</td></tr>";
 	    	}
-	    	echo "</table>";
+	    	echo "</center></table>";
 	    } 
 	    else 
 	    {
@@ -63,23 +64,23 @@
 	    	$dbcon->close();
 	    	if ($sqlstatus == 0)
 	    	{
-	    		echo "Bid Failed!";
+	    		echo "<h1>Bid Failed!</h1>";
 	    	}
 	    	if ($sqlstatus == 1)
 	    	{
-	    		echo "Bid Created!";
+	    		echo "<h1>Bid Created!</h1>";
 	    	}
 	    	if ($sqlstatus == 2)
 	    	{
-	    		echo "Bid must be higher than last bid";
+	    		echo "<h1>Bid must be higher than last bid</h1>";
 	    	}
 	    	if ($sqlstatus == 3)
 	    	{
-	    		echo "You cannot bid on a ended auction";
+	    		echo "<h1>You cannot bid on a ended auction</h1>";
 	    	}
 	    	if ($sqlstatus == 4)
 	    	{
-	    		echo "You cant bid on your own auctions";
+	    		echo "<h1>You cant bid on your own auctions</h1>";
 	    	}
 	    }
 	    ?>

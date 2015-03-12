@@ -11,6 +11,8 @@
 	if(login_check($dbcon) == true AND $_SESSION['status'] == 0) 
 	{
 	    include 'profile_header.php';
+	    
+	    echo 'Logged in as : '.$_SESSION['username'];
 		
 		echo '<h4>This is where you can change your email, for the username: <u>'.$_SESSION['username'].'</u></br></h4>';
 		

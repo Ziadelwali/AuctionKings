@@ -12,6 +12,8 @@
 	{
 
     	include 'profile_header.php';
+    	
+    	echo 'Logged in as : '.$_SESSION['username'];
 
 		echo '<h4>This is where you can change your password for the username : <u>'.$_SESSION['username'].'</u></br></h4>';
 		
@@ -20,15 +22,15 @@
 		?>
 		<!--the form hasn't been posted yet, display it-->
 		<p></br>to change your password, enter your new password in the field below and submit it.</p>
-		<form action="updatepassword.php" method="post" name="update_password_form" class="form-horizontal">
+		<center><form action="updatepassword.php" method="post" name="update_password_form" class="form-horizontal">
 			<div class="control-group">
-				<label class="control-label" for="updatePassword">Password</label>
+				<h4>Password</h4>
 				<div class="controls">
 					<input type="password" name="updPassword" id="password" placeholder="Password">
 				</div>
 			</div>
 			<div class="control-group">
-				<label class="control-label" for="retypePassword">Retype password</label>
+				<h4>Retype password</h4>
 				<div class="controls">
 					<input type="password" name="updPassword2" id="password2" placeholder="Retype Password">
 					<input type="hidden" name="p">
@@ -38,8 +40,8 @@
 				<div class="controls">
 					<script src="../secure/forms.js"></script>
 					<script src="../secure/sha512.js"></script>
+					<p>Notice, when you update your password<br> you will be logged out and redirected to login page.</p>
 					<input type="submit" class="btn" value="Update here" onclick="return checkAndSubmit2(this.form, this.form.updPassword, this.form.updPassword2);"></input>
-					<p>Notice, when you update your password you will be redirected to login page.</p>
 					<!-- If update went successfull show everything ok info -->
 					<?php if(isset($_GET['success'])) 
 						{?>
@@ -53,7 +55,7 @@
 					
 				</div>
 			</div>
-		</form>
+		</form></center>
 		<p></br><a href="profile.php">Go back!</a></p>
 	</div>
 </div>

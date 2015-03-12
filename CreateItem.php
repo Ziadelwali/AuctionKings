@@ -12,17 +12,18 @@
 	{
 	    include 'header.php';
 	    
+	    echo 'Logged in as : '.$_SESSION['username'];
 	    
 	    switch ($_SERVER['REQUEST_METHOD'])
 	    {
 	    	case 'GET':
 	    
 ?>
-<form method='POST' enctype="multipart/form-data">
+<center><form method='POST' enctype="multipart/form-data">
 	<fieldset>
-		<legend>Add item details</legend>
+		<legend><h1>Add item details</h1></legend>
 		<div class="container">
-		Categories:<br>
+		<h2>Categories:</h2>
 		<?php 
 		
 	$select_stmt = $dbcon->query("SELECT id_category, cat_name, cat_description FROM category");
@@ -41,19 +42,19 @@
 		
 		
 		?>
-			<br>Title: <br> <input type='text' name='title'
+			<br><h2>Title: </h2> <input type='text' name='title'
 				value="<?php echo isset($_POST['title']) ? $_POST['title'] : '' ?>"><br>
-			<br> Description:<br>
+			<br> <h2>Description:</h2>
 			<textarea name="description" rows="6" cols="40"
 				value="<?php echo isset($_POST['description']) ? $_POST['description'] : '' ?>"></textarea>
-			<br> <br> Your minimum price: <br> <input type='number'
+			<br> <br> <h2>Starting price:</h2><input type='number'
 				name='minPrice' min="0"
 				value="<?php echo isset($_POST['minPrice']) ? $_POST['minPrice'] : '' ?>"><br>
-			<br> Image: <input name="imagefile" type="file"<br> <br>
+			<br> <h2>Image: </h2><input name="imagefile" type="file"<br> <br>
 		</div>
-		<br> <input type='submit' value='Submit'>
+		<br><input type='submit' value='Submit'>
 	</fieldset>
-</form>
+</form></center>
 
 <?php
 

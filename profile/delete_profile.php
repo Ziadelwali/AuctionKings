@@ -11,6 +11,8 @@
 	if(login_check($dbcon) == true AND $_SESSION['status'] == 0) 
 	{
 	    include 'profile_header.php';
+	    
+	    echo 'Logged in as : '.$_SESSION['username'];
 
         switch ($_SERVER['REQUEST_METHOD'])
 			{
@@ -18,7 +20,7 @@
                 ?>
                 <!--the form hasn't been posted yet, display it-->
                 <!-- Deletion -->
-                <p><h4>Notice... If you delete your profile you will be redirected to login page and your profile will be deleted.</h4></p>
+                <p><h4>Click button to delete profile and be logged out.</h4></p>
 			<form method='post' action='delete_profile.php'>
 				<center><input type='submit' value='Delete profile' /></center></form>
                 <?php

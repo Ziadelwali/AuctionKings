@@ -12,6 +12,7 @@
 	if(login_check($dbcon) == true AND ((int)$_SESSION['status']) == 0)
 	{
 	    include 'header.php';
+		echo 'Logged in as : '.$_SESSION['username'];
 		
 		if ($_SESSION['role_id'] == 2)
 		{
@@ -20,7 +21,7 @@
 				case 'GET':
 			?>
 			<!--the form hasn't been posted yet, display it-->
-			<form method='post' action='homepage.php'>
+			<br><form method='post' action='homepage.php'>
 				<center>Category name: <input type='text' name='cat_name' />
 				Category description: <textarea name='cat_description' /></textarea>
 			<input type='submit' value='Add category' /></center>
@@ -37,23 +38,23 @@
 						switch ($_GET['catError']) 
 						{
 							case 1:
-							echo "Only letters and white space allowed!";
+							echo "<h1>Only letters and white space allowed!</h1>";
 							break;
 							
 							case 2:
-							echo "Category has to have a name!";
+							echo "<h1>Category has to have a name!</h1>";
 							break;
 							
 							case 3:
-							echo "Database error!";
+							echo "<h1>Database error!</h1>";
 							break;
 							
 							case 4:
-							echo "Category doesn't exist!";
+							echo "<h1>Category doesn't exist!</h1>";
 							break;
 							
 							default:
-							echo "Unknown error!";
+							echo "<h1>Unknown error!</h1>";
 						}
 					}
 				?>
@@ -124,7 +125,7 @@
 		// Select queries return a resultset
 		if ($select_stmt = $dbcon->query("SELECT id_category, cat_name, cat_description FROM category ORDER BY cat_name")) 
 		{
-			echo '<center><table border="1">';
+			echo '<center><br><table border="1">';
 			echo '<tr>';
 			echo '<th><h4>Category</h4></th>';
 			echo '<th><h4>Description</h4></th>';

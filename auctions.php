@@ -12,16 +12,17 @@
 	{
 	    include 'header.php';
 	    
-	    
+	    echo 'Logged in as : '.$_SESSION['username'];
 	    
 	    $sql = "SELECT ID, Title, Picture, Higestbid, Timeend, Description, Bids FROM auctionking.view_all_auctions";
 	    $result = $dbcon->query($sql);
 	    
 	    if ($result->num_rows > 0)
 	    {
-	    	echo "<table><tr><th>ID</th><th>Title</th><th>Picture</th><th>Higest Bid</th><th>Auction ends</th><th>Description</th><th>Bids</th></tr>";
+	    	echo "<center><br><table><tr><th>ID</th><th>Title</th><th>Picture</th><th>Higest Bid</th><th>Auction ends</th><th>Description</th><th>Bids</th></tr>";
 	    	// output data of each row
-	    	while($row = $result->fetch_assoc()) {
+	    	while($row = $result->fetch_assoc()) 
+	    	{
 	    		$id = $row["ID"];
 	    		$title = $row["Title"];
 	    		$pic = $row["Picture"];
@@ -34,7 +35,7 @@
 	    			
 	    		// echo '<tr><td>' . $row["ID"]. '</td><td>' . $row["Title"]. '</td><td><div id="myDiv"><a href="?id=$id"><img src="img/' . $row["Picture"]. '"></a></div></td><td>' . $row["Higestbid"]. '</td><td>' . $row["Timeend"]. '</td><td>' . $row["Description"]. '</td><td>' . $row["Bids"]. "</td></tr>";
 	    	}
-	    	echo "</table>";
+	    	echo "</center></table>";
 	    } else {
 	    	echo "0 results";
 	    }
